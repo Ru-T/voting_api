@@ -1,7 +1,20 @@
 require 'test_helper'
 
 class CandidateTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def test_create_new_candidate
+    assert Candidate.create(name: "Donald Trump")
+    assert_raises(ArgumentError) do
+      Candidate.create(1, 2)
+    end
+  end
+
+  def test_candidates_associated_with_votes
+    c = Candidate.create(name: "Hilary Clinton")
+    v = Vote.new()
+    c.votes << v
+
+    assert_equal [v], Candidate.find(c.id).votes
+  end
+
 end
