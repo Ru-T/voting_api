@@ -9,7 +9,7 @@ class VoterTest < ActiveSupport::TestCase
     end
   end
 
-  def test_voters_associated_with_votes
+  def test_voters_associated_with_one_vote
     vr = Voter.create(name: "Ilan Man")
     v = Vote.new()
     vr.vote = v
