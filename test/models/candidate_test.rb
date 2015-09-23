@@ -3,7 +3,8 @@ require 'test_helper'
 class CandidateTest < ActiveSupport::TestCase
 
   def test_create_new_candidate
-    assert Candidate.create(name: "Donald Trump")
+    candidate = Candidate.new(name: "Donald Trump")
+    assert candidate.save
     assert_raises(ArgumentError) do
       Candidate.create(1, 2)
     end

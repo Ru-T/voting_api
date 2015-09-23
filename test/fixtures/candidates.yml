@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  hometown: MyString
-  district: MyString
-  party: MyString
+  name: Donald Trump
+  hometown: New York
+  district: Kings
+  party: Republican
 
 two:
-  name: MyString
-  hometown: MyString
-  district: MyString
-  party: MyString
+  name: Hilary Clinton
+  hometown: New Rochelle
+  district: Westchester
+  party: Democrat
