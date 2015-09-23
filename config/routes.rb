@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'votes/index'
+  post 'votes/create'
 
   get 'voters/index'
   get 'voters/show'
