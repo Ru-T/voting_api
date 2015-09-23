@@ -1,6 +1,7 @@
 class VotersController < ApplicationController
   #before_filter :restrict_access, only: [:show, :update]
 
+#DELETE INDEX VIEW
   def index
     render json: Voter.all.to_json
   end
@@ -16,22 +17,25 @@ class VotersController < ApplicationController
 
   def show
     voter = Voter.find(params[:id])
-    # if voter.find(access_token) == voter.find(params[:access_token])
-    render json: Voter.find(id).to_json
-  #   else
-  #     render json: "Wrong access token"
-  #   end
+    if voter.access_token == params[:access_token]
+      render json: voter#.to_json
+    else
+      render json: "Wrong access token"
+    end
   end
 
   def update
     voter = Voter.find(params[:id])
-    voter.update(name: params[:name], party: params[:party]) # MUST UPDATE BOTH!!!!
+    voter.name = params[:name] if params[:name]
+    voter.party = params[:party] if params[:party]
+    # mystery line
     render json: voter.to_json
   end
 
+  #voter.update(name: params[:name], party: params[:party]) # MUST UPDATE BOTH!!!!
+
     # voter = Voter.find(params[:id])
     # voter.update
-    #
     # OR
     # voter = voter.find(params[:name])
     # voter.update!(voter_params)
