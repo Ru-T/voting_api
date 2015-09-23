@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'voters/index'
+
   get 'candidates/index'
   get 'candidates/show'
 
