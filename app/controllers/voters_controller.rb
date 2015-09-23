@@ -17,7 +17,7 @@ class VotersController < ApplicationController
   def show
     voter = Voter.find(params[:id])
     if voter.access_token == params[:access_token]
-      render json: voter#.to_json
+      render json: voter
     else
       render json: "Wrong access token"
     end
@@ -28,7 +28,11 @@ class VotersController < ApplicationController
     voter.name = params[:name] if params[:name]
     voter.party = params[:party] if params[:party]
       if voter.save
-        render json: voter.to_json
+        if voter.access_token == params[:access_token]
+          render json: voter.to_json
+        else
+          render json: "Wrong access token"
+        end
       else
         render json: "This did not successfully update."
       end
