@@ -6,10 +6,11 @@ class VoteTest < ActiveSupport::TestCase
     assert Vote.create()
   end
 
-  def test_create_new_vote_with_parameters
-    assert_raises(ArgumentError) do
-      Vote.create(1, 2)
-    end
+  def test_voter_id_uniqueness_to_vote
+    vote = Vote.create(voter_id: 2)
+    vote2 = Vote.new(voter_id: 2)
+
+    refute vote2.save
   end
 
 end
