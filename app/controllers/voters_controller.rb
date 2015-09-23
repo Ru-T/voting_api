@@ -1,5 +1,4 @@
 class VotersController < ApplicationController
-  # before_filter :restrict_access, only: [:show, :update]
 
 #DELETE INDEX VIEW
   def index
@@ -37,7 +36,7 @@ class VotersController < ApplicationController
 
   # private def restrict_access
   #   authenticate_or_request_with_http_token do |token, options|
-  #     Vote.exists? (access_token: token)
+  #     token = Voter.find(params[:access_token])
   #   end
   # end
 
