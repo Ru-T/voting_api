@@ -1,5 +1,5 @@
 class VotersController < ApplicationController
-  #before_filter :restrict_access, only: [:show, :update]
+  # before_filter :restrict_access, only: [:show, :update]
 
 #DELETE INDEX VIEW
   def index
@@ -28,23 +28,16 @@ class VotersController < ApplicationController
     voter = Voter.find(params[:id])
     voter.name = params[:name] if params[:name]
     voter.party = params[:party] if params[:party]
-    # mystery line
-    render json: voter.to_json
+      if voter.save
+        render json: voter.to_json
+      else
+        render json: "This did not successfully update."
+      end
   end
-
-  #voter.update(name: params[:name], party: params[:party]) # MUST UPDATE BOTH!!!!
-
-    # voter = Voter.find(params[:id])
-    # voter.update
-    # OR
-    # voter = voter.find(params[:name])
-    # voter.update!(voter_params)
-    # redirect_to voter
 
   # private def restrict_access
   #   authenticate_or_request_with_http_token do |token, options|
-  #     Voter.find_by(auth_token: token)
-
+  #     Vote.exists? (access_token: token)
   #   end
   # end
 
