@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922181910) do
+ActiveRecord::Schema.define(version: 20150923164809) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "name"
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20150922181910) do
   create_table "voters", force: :cascade do |t|
     t.string   "name"
     t.string   "party"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "access_token"
   end
 
   create_table "votes", force: :cascade do |t|
