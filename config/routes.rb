@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   get 'votes/index'
   post 'votes/create'
+  delete 'votes/destroy'
+  patch 'votes/update'
 
   get 'voters/index'
   get 'voters/show'
   post 'voters/create'
+  patch 'voters/update'
 
   get 'candidates/index'
   get 'candidates/show'

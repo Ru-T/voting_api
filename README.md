@@ -1,23 +1,25 @@
 # Summary
 
-This program is a Rails-based application which serves up only an API, responding with JSON.
+This program is a Rails-based application about candidates, voters and their votes which serves up an API, responding with JSON.
 
 ## Description
 
-This program has the following actions in the following locations:
+This program has the following functionalities:
 
-* /candidates: Based on a candidates table, with at least name, hometown, district, and party attributes
-- index action
-- show action
-* /voters: Based on a voters table, with at least name and party attributes
-- create action
-- show action, with token authentication to prove that you are the voter
-- update action, with token authentication to prove that you are the voter
-* /votes: Based on a votes table, with at least voter_id and candidate_id attributes
+* Candidates with name, hometown, district, and party attributes
+- access an index view of all candidates
+- access a show view of an individual candidate, based on their ID
+
+* Voters with name and party attributes
+- create a new voter with a name
+- see an individual voter, provided you authenticate that you are that voter
+- update information on a voter, provided you authenticate that you are that voter
+
+* Votes with voter_id and candidate_id attributes
 - Each voter can cast at most one vote, period.
-- create action, with token authentication to show that you are the voter
-- destroy action, with token authentication to show that you are the voter
-- index action (which shows all candidates and a number of votes for each)
+- create a new vote, provided you authenticate that you are a voter
+- destroy that vote, provided you authenticate that you are that voter
+- access an index view of all candidates and a number of votes for each
 
 ## ERD of Table Structure
 
