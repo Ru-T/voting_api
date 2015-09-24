@@ -6,14 +6,45 @@ class VotesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "voters must provide their access_token" do
+    v = Voter.first
+    post :create, candidate_id: Candidate.first.id, voter_id: v.id
+    refute v.vote
+
+    post :create, candidate_id: Candidate.first.id, voter_id: v.id, access_token: v.access_token
+    assert v.reload.vote
+  end
+
   test "create a new vote" do
     post :create
     assert_response :success
   end
 
-  test "destroy an existing vote" do
-    delete :destroy, id: 1
-    assert_response :success
+  test "votes can be deleted by the voter with access token" do
+    v = Voter.first
+    post :create, candidate_id: Candidate.first.id, voter_id: v.id, access_token: v.access_token
+    assert v.reload.vote
+
+    delete :destroy, access_token: v.access_token
+    refute v.reload.vote
   end
+
+  test "index displays all candidates and their vote count" do
+    get :index
+
+    assert response.body.include?("1")
+  end
+
+
+
+
+
+
+
+
+
+
+
+
 
 end

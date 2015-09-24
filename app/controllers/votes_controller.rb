@@ -1,27 +1,32 @@
 class VotesController < ApplicationController
 
   def create
-    vote = Vote.new(voter_id: params[:voter_id], candidate_id: params[:candidate_id])
+    vote = Vote.new
+    vote.candidate_id = params[:candidate_id]
+    vote.voter_id = params[:voter_id]
     if vote.save
-      if Voter.find_by(voter_id).access_token == params[:access_token]
         render json: vote.to_json
-      else
-        render json: "Wrong access token"
-      end
     else
       render json: vote.errors
     end
   end
 
   def destroy
-    id = params[:id]
-    Vote.find(id).destroy
+    voter = Vote.find_by(access_token: params[:access_token])
+    voter.vote.destroy
     render json: "This vote has been destroyed."
   end
 
   def index
-    render json: Vote.all.to_json
-    # render json: Vote.as_json(only: [:candidate_id])
+    results = Vote.group(:candidate_id).count
+    render json: results
   end
+
+  def create
+   vote = Vote.new
+   vote.candidate_id = params[:candidate_id]
+   vote.voter_id = params[:voter_id]
+   vote.save ? (render json: vote.to_json) : (render json: vote.errors)
+ end
 
 end

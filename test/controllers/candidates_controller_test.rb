@@ -8,11 +8,11 @@ class CandidatesControllerTest < ActionController::TestCase
   end
 
   test "show individual candidate" do
-    get :show, id: 1
+    get :show, id:candidates(:trump).id
 
     assert_response :success
-    assert respond.body.include("Trump")
+    assert response.body.include?("Trump")
+    refute response.body.include?("Hilary")
   end
-  #request.headers["HTTP_AUTHORIZATION"] = %{Token #{voters(:test_one).token}}`
 
 end

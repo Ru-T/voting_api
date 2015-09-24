@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+trump:
   name: Donald Trump
   hometown: New York
   district: Kings
   party: Republican
 
-two:
+clinton:
   name: Hilary Clinton
   hometown: New Rochelle
   district: Westchester

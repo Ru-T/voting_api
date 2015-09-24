@@ -1,8 +1,8 @@
 class VotersController < ApplicationController
 
-  # def index
-  #   render json: Voter.all.to_json
-  # end
+  def index
+    render json: Voter.all.to_json
+  end
 
   def create
     v = Voter.new(name: params[:name])
