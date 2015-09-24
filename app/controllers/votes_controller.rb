@@ -5,7 +5,7 @@ class VotesController < ApplicationController
     vote.candidate_id = params[:candidate_id]
     vote.voter_id = params[:voter_id]
     if vote.save
-        render json: vote.to_json
+      render json: vote.to_json
     else
       render json: vote.errors
     end
@@ -21,12 +21,5 @@ class VotesController < ApplicationController
     results = Vote.group(:candidate_id).count
     render json: results
   end
-
-  def create
-   vote = Vote.new
-   vote.candidate_id = params[:candidate_id]
-   vote.voter_id = params[:voter_id]
-   vote.save ? (render json: vote.to_json) : (render json: vote.errors)
- end
 
 end
