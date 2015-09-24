@@ -1,9 +1,8 @@
 class VotersController < ApplicationController
 
-#DELETE INDEX VIEW
-  def index
-    render json: Voter.all.to_json
-  end
+  # def index
+  #   render json: Voter.all.to_json
+  # end
 
   def create
     v = Voter.new(name: params[:name])
@@ -34,14 +33,8 @@ class VotersController < ApplicationController
           render json: "Wrong access token"
         end
       else
-        render json: "This did not successfully update."
+        render json: "This did not successfully save to the database."
       end
   end
-
-  # private def restrict_access
-  #   authenticate_or_request_with_http_token do |token, options|
-  #     token = Voter.find(params[:access_token])
-  #   end
-  # end
 
 end
