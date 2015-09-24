@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  party: MyString
+ruti:
+  name: Ruti Wajnberg
+  party: Independent
+  access_token: 018e3c41eb5440e2c7c961b522513d84
 
-two:
-  name: MyString
-  party: MyString
+ilan:
+  name: Ilan Man
+  party: Democrat
+  access_token: ff085a098d14ce7c0d3af5f7f5e5cce9

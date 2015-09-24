@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   delete 'votes/destroy'
   patch 'votes/update'
 
-  get 'voters/index'
+  # get 'voters/index'
   get 'voters/show'
   post 'voters/create'
   patch 'voters/update'

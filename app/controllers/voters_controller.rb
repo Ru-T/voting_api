@@ -1,11 +1,11 @@
 class VotersController < ApplicationController
 
-  def index
-    render json: Voter.all.to_json
-  end
+  # def index
+  #   render json: Voter.all.to_json
+  # end
 
   def create
-    v = Voter.new(name: params[:name])
+    v = Voter.new(name: params[:name], party: params[:party])
     if v.save
       render json: v.to_json
     else
@@ -24,16 +24,16 @@ class VotersController < ApplicationController
 
   def update
     voter = Voter.find(params[:id])
-    voter.name = params[:name] if params[:name]
-    voter.party = params[:party] if params[:party]
-      if voter.save
-        if voter.access_token == params[:access_token]
+      if voter.access_token == params[:access_token]
+        voter.name = params[:name] if params[:name]
+        voter.party = params[:party] if params[:party]
+        if voter.save
           render json: voter.to_json
         else
-          render json: "Wrong access token"
-        end
+          render json: voter.errors
+        end    
       else
-        render json: "This did not successfully save to the database."
+        render json: "Wrong access token"
       end
   end
 
